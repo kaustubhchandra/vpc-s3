@@ -1,3 +1,5 @@
-main_vpc_cidr = "26.15.17.0/24"
- public_subnets = "26.15.17.0/26"
- private_subnets = "26.15.17.64/26"
+main_vpc_cidr = "190.160.44.0/24"
+ public_subnets = "190.160.44.0/26"
+ public_subnets-1 = "190.160.44.64/26"
+ private_subnets = "190.160.44.128/26"
+ private_subnets-1 = "190.160.44.192/26"

@@ -4,6 +4,15 @@ secret_key = "X9Q6tDGhPu0G35QMD/o6NUAB08C5Xg0j9HnBWlzP"
 region = "us-east-2"
 }
 
+terraform {
+  backend "s3" {
+    bucket = "firefly-elm-dev-terraform"
+    key    = "firefly-elm-dev-terra-log/terraform.tfstat"
+    region = "us-east-2"
+  }
+}
+
+
 #Create the VPC
  resource "aws_vpc" "Main" {                # Creating VPC here
    cidr_block       = var.main_vpc_cidr     # Defining the CIDR block use 26.15.17.0/24 for demo
@@ -32,7 +41,7 @@ region = "us-east-2"
  #Create a Public Subnets.
  resource "aws_subnet" "publicsubnets-2" {    # Creating Public Subnets
    vpc_id =  aws_vpc.Main.id
-   cidr_block = "26.15.17.128/26"        # CIDR block of public subnets
+   cidr_block = "${var.public_subnets-1}"        # CIDR block of public subnets
    availability_zone = "us-east-2b"
    tags = {
      Name = "firefly-ELM-public-2b"
@@ -53,7 +62,7 @@ region = "us-east-2"
 # Create a Private Subnet                   # Creating Private Subnets
  resource "aws_subnet" "privatesubnets-2" {
    vpc_id =  aws_vpc.Main.id
-   cidr_block = "26.15.17.192/26"          # CIDR block of private subnets
+   cidr_block = "${var.private_subnets-1}"          # CIDR block of private subnets
    availability_zone = "us-east-2a"
    tags = {
      Name = "firefly-ELM-private-2a"
