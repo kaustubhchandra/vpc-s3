@@ -1,13 +1,13 @@
 provider "aws" {
-access_key = "AKIA4NCU4AZERBDVZO7G"
-secret_key = "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"
+access_key = "----"
+secret_key = "---"
 region = "us-east-2"
 }
 
 terraform {
   backend "s3" {
-    bucket = "firefly-elm-dev-terraform"
-    key    = "firefly-elm-dev-terra-log/terraform.tfstat"
+    bucket = "firefly-elm-prod-terraform"
+    key    = "firefly-elm-prod-terra-log/terraform.tfstat"
     region = "us-east-2"
   }
 }
